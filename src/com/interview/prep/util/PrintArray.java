@@ -9,7 +9,7 @@ public class PrintArray<T> {
     {
         for (T value: array) {
 
-            System.out.println(value);
+            System.out.print(value+",");
         }
     }
 
