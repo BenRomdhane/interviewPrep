@@ -10,8 +10,6 @@ You can submit as many times as you wish within the deadline. Your final submiss
 
 Frog Jumping
 
-(INOI 2005)
-
 The latest hit on TV is a jumping game played on a giant rectangular chessboard. Each participant dresses up in a green frog suit and starts at the top left corner of the board. On every square there is a spring-loaded launcher that can propel the person either to the right or down.
 
 Each launcher has two quantities R and D associated with it. The launcher can propel the person upto R squares to the right and upto D squares down. The participant can set the direction of the launcher to Right or Down and set the number of squares to jump to any number between 1 and R squares when jumping right, or between 1 and D squares when jumping down. The winner is the one who can reach bottom right corner of the chessboard in the smallest number of jumps.
