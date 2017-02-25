@@ -44,11 +44,16 @@ Full solution.
 
 Input format
 
-The first line of the input has three numbers M, A and B. M is the number of triples. The next M lines (lines 2,3,...,M+1) describe the triples. Line i+1 contains the three positive integers Xi, Yi and Zi that make up the ith triple. Your task is to find the value of the least value chain connecting A and B.
+The first line of the input has three numbers M, A and B. M is the number of triples. 
+The next M lines (lines 2,3,...,M+1) describe the triples. Line i+1 contains the three 
+positive integers Xi, Yi and Zi that make up the ith triple. Your task is to find the value 
+of the least value chain connecting A and B.
 
 Output format
 
-If there is at least one chain connecting A and B the first line of the output must consist of a single word YES. In that case the second line must contain a single integer value indicating the value of the least valued chain connecting A and B. If there are no chains connecting A and B the output should contain a single line with the word NO on it.
+If there is at least one chain connecting A and B the first line of the output must consist of a single word YES. 
+In that case the second line must contain a single integer value indicating the value of the least valued 
+chain connecting A and B. If there are no chains connecting A and B the output should contain a single line with the word NO on it.
 
 Test Data:
 
