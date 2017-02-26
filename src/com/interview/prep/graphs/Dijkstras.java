@@ -7,16 +7,12 @@ import java.util.*;
  */
 public class Dijkstras {
 
-
-
-
     public static class GraphNode{
         public int value;
         public int distance;
 
         public GraphNode(int value,int distance)
         {
-
             this.value = value;
             this.distance = distance;
         }
@@ -25,6 +21,14 @@ public class Dijkstras {
     public static void main(String[] args) {
 
         Map<Integer,List<GraphNode>> adjacencyList=new TreeMap<Integer, List<GraphNode>>();
+
+/*        adjacencyList.put(1, Arrays.asList(new GraphNode[]{new GraphNode(3,80),new GraphNode(2,10)}));
+        adjacencyList.put(2, Arrays.asList(new GraphNode[]{new GraphNode(1,10),new GraphNode(3,6),new GraphNode(5,20)}));
+        adjacencyList.put(3, Arrays.asList(new GraphNode[]{new GraphNode(1,80),new GraphNode(2,6),new GraphNode(4,70)}));
+        adjacencyList.put(4, Arrays.asList(new GraphNode[]{new GraphNode(3,70)}));
+        adjacencyList.put(5, Arrays.asList(new GraphNode[]{new GraphNode(2,20),new GraphNode(7,10),new GraphNode(6,50)}));
+        adjacencyList.put(6, Arrays.asList(new GraphNode[]{new GraphNode(5,50),new GraphNode(7,5)}));
+        adjacencyList.put(7, Arrays.asList(new GraphNode[]{new GraphNode(6,5),new GraphNode(5,10)}));*/
 
         adjacencyList.put(1, Arrays.asList(new GraphNode[]{new GraphNode(3,80),new GraphNode(2,10)}));
         adjacencyList.put(2, Arrays.asList(new GraphNode[]{new GraphNode(1,10),new GraphNode(3,6),new GraphNode(5,20)}));
