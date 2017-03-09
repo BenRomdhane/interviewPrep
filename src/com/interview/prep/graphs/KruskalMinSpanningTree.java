@@ -40,9 +40,11 @@ public class KruskalMinSpanningTree {
         edges.add(new Edge(5, 7, 6));
 
         int[] component = new int[8];
+        //every vertex will have its own unique component id in the beginning
         for (int i = 0; i < component.length; i++) {
             component[i] = i;
         }
+        //by the end there will be n-1 edges that will have the same component Id
 
         Collections.sort(edges, new Comparator<Edge>() {
             @Override
@@ -53,12 +55,22 @@ public class KruskalMinSpanningTree {
 
         List<Edge> minSpanningTree = new ArrayList<Edge>();
         int i = 0;
+        //tree will contain n-1 edges where n is the numner of vertices
         while (minSpanningTree.size() != 6) {
             Edge edge = edges.get(i);
+            //find the least weighted edge and assign the component Id of the start node
+            // to the end node
             System.out.println(edge.toString());
+            //dont add a vertex that is already part of the set that has a specific component id
+            //else wel have a cycle
             if (component[edge.startNode] != component[edge.endNode]) {
+                //set the component Id of the end vertex to the start vertex
+
                 int temp=component[edge.endNode];
+                //add the vertext to the min spanning tree
                 minSpanningTree.add(edge);
+                //update the component id of all the nodes that are linked to
+                // the recently added node
                 for (int j = 0; j < component.length; j++) {
                     if(component[j] == temp)
                     {
