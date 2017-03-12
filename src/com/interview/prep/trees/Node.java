@@ -3,7 +3,7 @@ package com.interview.prep.trees;
 /**
  * Created by Nikitash Pawar on 3/10/2017.
  */
-public class Node {
+public class Node implements Cloneable{
 
     Node left,right;
 
@@ -29,6 +29,7 @@ public class Node {
                 left=new Node(this,value);
             }else{
                 left.insert(value);
+               // rebalance(left);
             }
         }else if(value > data)
         {
@@ -36,8 +37,12 @@ public class Node {
                 right=new Node(this,value);
             }else{
                 right.insert(value);
+                //rebalance(right);
             }
         }
+
+        rebalance(this);
+        return;
 
     }
 
@@ -274,6 +279,156 @@ public class Node {
 
         }
      }
+
+    public static int heightOfTheTree(Node node){
+        //height of the tree with a single node is 0
+        //while height of the tree with no node is -1
+        if (node==null){
+            return -1;
+        }
+
+        int leftHeight=heightOfTheTree(node.left);
+        int rightHeight=heightOfTheTree(node.right);
+
+        //if there is only root node then -1 is nullified
+        //with +1 and 0 is returned
+        if(leftHeight>rightHeight){
+            return leftHeight+1;
+        }else{
+            return rightHeight+1;
+        }
+    }
+
+    /**
+     * A Tree is Balanced If:
+     * 1. If the difference between the height of left subtree and
+     * the right subtree is not more than 1
+     * 2. Right subtree is balanced
+     * 3. Left subtree is balanced
+     * @param node
+     * @return
+     */
+    public static boolean isBalancedTree(Node node){
+
+        if(node==null){
+            return true;
+        }
+
+        int leftHeight = heightOfTheTree(node.left);
+        int rightHeight = heightOfTheTree(node.right);
+
+        if(Math.abs(leftHeight-rightHeight)<=1 && isBalancedTree(node.left)&&isBalancedTree(node.right)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * Rotations:
+     * - slope is is height(L)-height(R)
+     * - slope is impacted in case of insert or delete
+     * - is the slope is +2 then we rotate right
+     */
+    public static void rotateRight(Node node){
+        BTreePrinter printer=new BTreePrinter();
+
+        System.out.println("Rotating Right:start");
+        printer.printNode(node);
+
+        int x=node.data;
+        int y=node.left.data;
+        Node NLL=node.left.left;
+        Node NLR=node.left.right;
+        Node NR=node.right;
+
+        node.data=y;
+       // System.out.println("node.data=y;");
+        ///printer.printNode(node);
+        node.right=node.left;
+        //System.out.println("node.right=node.left");
+        //printer.printNode(node);
+        node.left=NLL;
+        //System.out.println("node.left=NLL;");
+        //printer.printNode(node);
+        node.right.data=x;
+        //System.out.println("node.right.data=x;");
+        //printer.printNode(node);
+        node.right.left=NLR;
+        //System.out.println("node.right.left=NLR;");
+        //printer.printNode(node);
+        node.right.right=NR;
+        //System.out.println("node.right.right=NR;");
+        printer.printNode(node);
+        System.out.println("Rotating Right:end");
+    }
+
+    /**
+     * Rotate left
+     * @param node
+     */
+    public static void rotateleft(Node node){
+        BTreePrinter printer=new BTreePrinter();
+        int y=node.data;
+        int z=node.right.data;
+        Node NL=node.left;
+        Node NRL=node.left==null?null:node.left.right;
+        Node NRR=node.right==null?null:node.right.right;
+        System.out.println("Rotating Left:start");
+        printer.printNode(node);
+        node.data=z;
+        node.left=node.right;
+        node.left.data=y;
+        node.right=NRR;
+        node.left.right=NRL;
+        node.left.left=NL;
+        printer.printNode(node);
+        System.out.println("Rotating Left:end");
+    }
+
+
+    /**
+     * if slope is 2 and slope of left subtree is -1
+     * then rotate the left subtree towards left
+     * then rotate the main tree right
+     *
+     * else if slope is -2 and the slope of the right subtree is 1
+     * rotate the right subtree towards right
+     * then rotate the main tree left
+     * @param node
+     */
+    public void rebalance(Node node){
+        System.out.println("rebalancing:start");
+        BTreePrinter printer=new BTreePrinter();
+        System.out.println("Slope "+slope(node));
+        printer.printNode(node);
+        if(slope(node)==2){
+            if (slope(node.left)==-1){
+                rotateleft(node.left);
+            }
+            rotateRight(node);
+        }
+
+        if(slope(node)==-2){
+            if(slope(node.right)==1){
+                rotateRight(node.right);
+            }
+            rotateleft(node);
+        }
+        printer.printNode(node);
+        System.out.println("rebalancing:end");
+        return;
+    }
+
+    /**
+     * Slope is height of left subtree minus the right subtree
+     * @param node
+     * @return
+     */
+    private int slope(Node node) {
+        return heightOfTheTree(node.left)-heightOfTheTree(node.right);
+    }
+
 
 
 }

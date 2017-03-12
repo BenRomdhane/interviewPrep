@@ -1,5 +1,7 @@
 package com.interview.prep.trees;
 
+import java.util.Objects;
+
 /**
  * Created by Nikitash Pawar on 3/10/2017.
  */
@@ -33,6 +35,8 @@ public class BinarySearchTree {
      In postorder each parent node is visited after (post) its children.
      */
 
+    // TODO: 3/12/2017 Need to add the size variable into the node
+    // TODO: 3/12/2017 Need to see how 8 is being missed
 
     public static void main(String[] args) {
 
@@ -44,56 +48,21 @@ public class BinarySearchTree {
         bst.insert(8);
         bst.insert(4);
         bst.printInOrder();
-        System.out.println("Height Of the Tree: "+heightOfTheTree(bst));
-        if(isBalancedTree(bst)){
+        System.out.println("Height Of the Tree: "+bst.heightOfTheTree(bst));
+        if(bst.isBalancedTree(bst)){
             System.out.println("Is Balanced");
         }else {
             System.out.println("Not Balanced");
         }
         BTreePrinter printer=new BTreePrinter();
         printer.printNode(bst);
+        //rotateRight(bst);
+        //rotateleft(bst);
+        //bst.rebalance(bst);
+        printer.printNode(bst);
+
+
     }
-
-    public static int heightOfTheTree(Node node){
-        //height of the tree with a single node is 0
-        //while height of the tree with no node is -1
-        if (node==null){
-            return -1;
-        }
-
-        int leftHeight=heightOfTheTree(node.left);
-        int rightHeight=heightOfTheTree(node.right);
-
-        //if there is only root node then -1 is nullified
-        //with +1 and 0 is returned
-        if(leftHeight>rightHeight){
-            return leftHeight+1;
-        }else{
-            return rightHeight+1;
-        }
-    }
-
-    /**
-     * A Tree is Balanced If:
-     * 1. If the difference between the height of left subtree and
-     * the right subtree is not more than 1
-     * 2. Right subtree is balanced
-     * 3. Left subtree is balanced
-     * @param node
-     * @return
-     */
-    public static boolean isBalancedTree(Node node){
-
-        int leftHeight = heightOfTheTree(node.left);
-        int rightHeight = heightOfTheTree(node.right);
-
-        if(Math.abs(leftHeight-rightHeight)<=1 && isBalancedTree(node.left)&&isBalancedTree(node.right)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
 
 
 }
