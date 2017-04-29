@@ -1,4 +1,4 @@
-package com.interview.prep.arrayandstrings;
+package com.interview.prep.twodimenarray;
 
 import java.util.ArrayList;
 import java.util.Arrays;

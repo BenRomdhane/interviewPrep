@@ -1,4 +1,4 @@
-package com.interview.prep.arrayandstrings;
+package com.interview.prep.strings;
 
 /**
  * Created by Nikitash Pawar on 11/20/2016.

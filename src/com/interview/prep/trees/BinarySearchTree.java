@@ -114,10 +114,16 @@ public class BinarySearchTree {
         System.out.println("Inor:E");
 
 
-        System.out.println("Post:S");
-        //preOrder non-recursive
-        bst.postorderNonRecursive(bst);
-        System.out.println("post:E");
+        System.out.println("Zig:S");
+        bst=new Node(20);
+        bst.left=new Node(4);
+        bst.right=new Node(10);
+        bst.left.left=new Node(8);
+        bst.left.right=new Node(5);
+        bst.right.right=new Node(1);
+        bst.right.left=new Node(2);
+        bst.zigZagTraversal(bst);
+        System.out.println("Zig:E");
 
     }
 

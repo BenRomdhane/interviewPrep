@@ -1,4 +1,4 @@
-package com.interview.prep.arrayandstrings;
+package com.interview.prep.twodimenarray;
 
 /**
  * Created by Nikitash Pawar on 2/18/2017.

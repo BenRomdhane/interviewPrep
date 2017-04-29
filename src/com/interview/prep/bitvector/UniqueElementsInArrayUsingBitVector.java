@@ -1,4 +1,4 @@
-package com.interview.prep.arrayandstrings;
+package com.interview.prep.bitvector;
 
 import java.util.HashSet;
 import java.util.Set;

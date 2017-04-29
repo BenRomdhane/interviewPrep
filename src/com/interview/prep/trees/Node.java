@@ -724,4 +724,52 @@ public class Node implements Cloneable{
             }
         }
     }
+
+    public void zigZagTraversal(Node node) {
+
+        Stack<Node> parents=new Stack();
+        Stack<Node> children=new Stack();
+        Stack<Node> temp=new Stack();
+        parents.add(node);
+        //will get toggled after the parent stack is empty else same
+        boolean lrEnabled=true;
+
+        while(!(parents.isEmpty() && children.isEmpty())){
+            Node parent = parents.pop();
+            System.out.println(parent.data);
+            if(lrEnabled){
+                if(parent.left!=null)
+                children.add(parent.left);
+                if(parent.right!=null)
+                children.add(parent.right);
+                //if parent becomes empty make swap it with children stack
+                //toggle the traversal
+                if(parents.isEmpty()){
+                    temp=children;
+                    children=parents;
+                    parents=temp;
+                    lrEnabled=!lrEnabled;
+                }
+
+            }else {
+                if (parent.right != null)
+                children.add(parent.right);
+                if (parent.left != null)
+                children.add(parent.left);
+                if(parents.isEmpty()){
+                    temp=children;
+                    children=parents;
+                    parents=temp;
+                    lrEnabled=!lrEnabled;
+                }
+
+            }
+
+
+        }
+
+
+
+
+    }
 }

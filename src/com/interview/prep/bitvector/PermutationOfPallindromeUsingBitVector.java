@@ -1,4 +1,4 @@
-package com.interview.prep.arrayandstrings;
+package com.interview.prep.bitvector;
 
 /**
  * Created by Nikitash Pawar on 11/20/2016.
@@ -10,6 +10,11 @@ public class PermutationOfPallindromeUsingBitVector {
         System.out.println(isPermutationOfPallindrome(s));
     }
 
+    /**
+     *
+     * @param s
+     * @return
+     */
     private static boolean isPermutationOfPallindrome(String s) {
         int checker=0;
         int index=0;
