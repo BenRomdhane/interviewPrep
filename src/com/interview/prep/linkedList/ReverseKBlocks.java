@@ -37,16 +37,25 @@ public class ReverseKBlocks {
 
         int count = 0;
 
+        FloydCycleFind.printLinkedList(head);
        /* Reverse first k nodes of linked list */
         while (count < k && current != null)
         {
+            //maintain reference to the next node
             next = current.next;
+            //make current nodes pointer point reverse
             current.next = prev;
+            //bring previous ahead
             prev = current;
+            //bring current ahead
             current = next;
+            //increment counter to ensure the block size is
+            //not surpassed
             count++;
+            FloydCycleFind.printLinkedList(prev);
         }
 
+        FloydCycleFind.printLinkedList(prev);
        /* next is now a pointer to (k+1)th node
           Recursively call for the list starting from current.
           And make rest of the list as next of first node */
