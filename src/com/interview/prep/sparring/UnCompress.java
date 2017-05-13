@@ -8,7 +8,15 @@ import java.util.Arrays;
 public class UnCompress {
 
 
-
+    /**
+     * on encounter digit-mark as the number of times
+     * need to move right.
+     * start moving all items from end of the array towards right
+     * by the number identified above.
+     * populate all the newly added places with values
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         char prev;
@@ -23,9 +31,12 @@ public class UnCompress {
         System.out.println(new String(input));
         for (int i = 0; i < input.length; i++) {
             if (Character.isDigit(input[i])){
+                //ident the amount of right movements
                 moveBy=Character.digit(input[i],10);
+                //starting right most element start moving them to right
                 input=shiftArrayToRightBy(input,i,moveBy-2);
                 int endIndex=i+moveBy-1;
+                //fill the spaces with the previos most char
                 Arrays.fill(input,i,endIndex,input[i-1]);
             }
             else if(input[i]==' ') break;
