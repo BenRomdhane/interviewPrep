@@ -33,7 +33,8 @@ public class UnCompress {
             if (Character.isDigit(input[i])){
                 //ident the amount of right movements
                 moveBy=Character.digit(input[i],10);
-                //starting right most element start moving them to right
+                //starti
+                // ng right most element start moving them to right
                 input=shiftArrayToRightBy(input,i,moveBy-2);
                 int endIndex=i+moveBy-1;
                 //fill the spaces with the previos most char

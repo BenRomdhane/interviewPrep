@@ -26,6 +26,7 @@ public class KadanesAlgorithm {
             }
         }
         System.out.println(max_so_far);
+        System.out.println(max_ending_here);
 
 
     }
