@@ -7,8 +7,9 @@ public class Perm {
 
     /*Driver function to check for above function*/
     public static void main (String[] args) {
-        int arr[] = {1, 2, 2,1};
-        int r = 2;
+        //int arr[] = {2, 1, 1,2};
+        int arr[] = {1, 2, 3,4};
+        int r = 3;
         int n = arr.length;
         printCombination(arr, n, r);
     }
