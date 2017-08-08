@@ -1,7 +1,6 @@
 package com.interview.prep.Tries;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Nikitash Pawar on 4/12/2017.
@@ -55,4 +54,50 @@ public class TrieNode {
 
     }
 
+
+    public List<String> match(String input, TrieNode root) {
+
+        List<String> suggestedWords=new ArrayList<>();
+        if(root==null){
+            return null;
+        }
+
+        char[] chars = input.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            TrieNode trieNode = root.tracker.get(chars[i]);
+            root=trieNode;
+        }
+
+        if (root.isAWord==true) {
+            return Arrays.asList(input);
+        }else
+        {
+            for (Map.Entry<Character, TrieNode> entry :root.tracker.entrySet()) {
+                fetchSuggestedWords(entry.getValue(),suggestedWords,input+entry.getKey());
+            }
+
+        }
+
+        return suggestedWords;
+    }
+
+    private void fetchSuggestedWords(TrieNode root, List<String> suggestedWords, String input) {
+
+        if(root==null){
+            return;
+        }
+
+        if(root.isAWord){
+            suggestedWords.add(input);
+        }
+
+
+            for (Map.Entry<Character, TrieNode> entry :root.tracker.entrySet()) {
+                fetchSuggestedWords(entry.getValue(),suggestedWords,input+entry.getKey());
+
+
+        }
+
+    }
 }

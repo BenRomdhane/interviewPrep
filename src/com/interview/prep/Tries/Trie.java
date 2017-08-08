@@ -1,5 +1,8 @@
 package com.interview.prep.Tries;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by Nikitash Pawar on 4/12/2017.
  */
@@ -8,15 +11,14 @@ public class Trie {
 
         TrieNode root=new TrieNode();
         root.insert("cat");
+        root.insert("cattle");
         root.insert("camel");
-        System.out.println("hi");
-        boolean cat = root.search("cad",root);
-        System.out.println("hi");
-        root.delete("cat");
-        cat = root.search("cat",root);
-        root.insert("cat");
-        cat = root.search("cat",root);
-        System.out.println("hi");
+        root.insert("care");
+        root.insert("calm");
+
+        List<String> matches=root.match("ca",root);
+
+        System.out.println(Arrays.asList(matches));
 
     }
 

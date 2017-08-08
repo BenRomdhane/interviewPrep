@@ -52,7 +52,7 @@ class Philosopher extends Thread
     {
         if(! _leftChopistick.used){
             if(!_rightChopistick.used){
-                _leftChopistick.take();
+                _rightChopistick.take();
                 _leftChopistick.take();
 
                 Log.msg(_name + " : Eat");

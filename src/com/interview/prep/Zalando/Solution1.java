@@ -62,7 +62,8 @@ public class Solution1 {
 
         for (String cit:city) {
             List<Image> citybased = imagesCopy.stream()
-                    .filter(p -> p.getCity().equalsIgnoreCase(cit)).collect(Collectors.toList());
+                    .filter(p -> p.getCity().equalsIgnoreCase(cit))
+                    .collect(Collectors.toList());
 
             Collections.sort(citybased, new Comparator<Image>() {
                 @Override
